@@ -23,10 +23,12 @@ public class ControlledCar extends Car
      */
     public void act() 
     {
-        if (Greenfoot.isKeyDown("w")) {
+        if (Greenfoot.isKeyDown("up")) {
             accelerate(1);
         }
-
+        if (Greenfoot.isKeyDown("down")) {
+            accelerate(-1);
+        }
         if (Greenfoot.isKeyDown("right")) {
             turn(5);
         }

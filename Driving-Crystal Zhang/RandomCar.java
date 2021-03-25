@@ -8,7 +8,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RandomCar extends Car
 {
+    public RandomCar() {
+        super();
+    }
+
+    public RandomCar(String licensePlate, int speed, int maxSpeed) {
+        super(licensePlate, speed, maxSpeed);
+    }
     
+    public void randomTurn() {
+        
+        int turnAmount= Greenfoot.getRandomNumber(20) - 10; // car will turn random amount
+        int chanceOfTurn = Greenfoot.getRandomNumber(100); 
+        //int turnChancePerFrame = Greenfoot.getRandomNumber(10);
+        
+        if (chanceOfTurn < 10) { // car has 10 percent chance of turning every frame
+            turn(turnAmount);
+        }
+            
+    }
+    
+    public void randomAccelerate() {
+        int accelerateAmount = Greenfoot.getRandomNumber(30)-15;
+        int chance = Greenfoot.getRandomNumber(100);
+        
+        if (chance < 2) {
+            accelerate(accelerateAmount);
+        }
+        
+    }
     
     /**
      * Act - do whatever the RandomCar wants to do. This method is called whenever
@@ -16,6 +44,18 @@ public class RandomCar extends Car
      */
     public void act() 
     {
-        // Add your action code here.
+        
+        // ensures car doesn't keep trying to turn while not moving 
+        if (getSpeed() != 0) {
+            move(getSpeed());
+            randomTurn();
+            randomAccelerate();
+        } else {
+            move(getSpeed());
+            randomAccelerate();
+        }
+        
+        wrap();
+        
     }    
 }

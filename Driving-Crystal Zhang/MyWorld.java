@@ -18,22 +18,18 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
         
-        carTest();
+        //carTest();
         
-        ControlledCar controlledCar = new ControlledCar(); // create car with initial speed = 0, max speed = 120
-      
-        int yCoord = 25;
-       
-        addObject(controlledCar,100, 200);
-    }
-    
-    // display message for car
-    private void showCarMessage(int yCoord, String msg) {
-        Message message = new Message();
+        ControlledCar controlledCar = new ControlledCar(); // create controlled car with initial speed = 0, max speed = 120
+        addObject(controlledCar,100, 200); // add to world
         
-        //addObject(message, 120, yCoord);
-        //message.showMessage(msg);
+        RandomCar randomCar = new RandomCar("rand",3, 120); // create random car
         
+        int randX = Greenfoot.getRandomNumber(580)-20;
+        int randY = Greenfoot.getRandomNumber(390) - 10;
+        int randRotation = Greenfoot.getRandomNumber(360);
+        addObject(randomCar, randX, randY); // add to world at random coordinates
+        randomCar.setRotation(randRotation);
     }
     
     // tests the Car class
@@ -48,32 +44,30 @@ public class MyWorld extends World
        System.out.println("The car speed is: " + car.getSpeed());
        System.out.println("The car's max speed is: " + car.getMaxSpeed());
        
-       showCarMessage(yCoord,"The license plate is: " + car.getLicensePlate());
        yCoord += 20;
-       showCarMessage(yCoord,"The initial car speed is: " + car.getSpeed()); 
+       
        yCoord += 20;
-       showCarMessage(yCoord,"The initial max speed is: " + car.getMaxSpeed()); 
+       
        yCoord += 20;
        
        
        // car speed is set to 10
        car.setSpeed(10);
        System.out.println("The car speed is: " + car.getSpeed()); //print in console
-       showCarMessage(yCoord,"The car speed is now: " + car.getSpeed()); //display on screen
+       
        yCoord += 20;
        
        // max speed is set to 20
        car.setMaxSpeed(20);
        System.out.println("The car's max speed is now: " + car.getMaxSpeed()); //print in console
-       showCarMessage(yCoord,"The max speed is now: " + car.getMaxSpeed()); //display on screen
+       
        yCoord += 25;
        
        // car speed is set to number greater than max speed
        car.setSpeed(30);
        System.out.println("The car speed cannot exceed max speed.");
        System.out.println("The car speed is now : " + car.getSpeed());
-       showCarMessage(yCoord,"Speed cannot exceed max speed! \n Car speed is now : " + car.getSpeed()); //display on screen
        
-    }
+    } 
     
 }

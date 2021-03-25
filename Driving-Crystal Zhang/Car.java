@@ -12,7 +12,7 @@ public class Car extends Actor
     private String licensePlate;
     private int speed;
     private int maxSpeed;
-
+    private boolean debug = false;
     /**
      * Constructor for class Car.
      * 
@@ -103,19 +103,19 @@ public class Car extends Actor
         int rightEdge = world.getWidth();
         int bottomEdge = world.getHeight();
 
-        System.out.println(edge + ". x is " + x + " and y is " + y);
+        if (debug) System.out.println(edge + ". x is " + x + " and y is " + y);
         if (edge == "bottom") {
-            System.out.println("car at bottom");
+            if (debug) System.out.println("car at bottom");
             setLocation(x, 0);
         } else if(edge == "top") {
             setLocation (x, bottomEdge);
-            System.out.println("car at top");
+            if (debug) System.out.println("car at top");
         } else if (edge == "left") {
             setLocation(rightEdge, y);
-            System.out.println("car at left");
+            if (debug) System.out.println("car at left");
         } else if (edge == "right") {
             setLocation(0, y);
-            System.out.println("car at right");
+            if (debug) System.out.println("car at right");
         } 
     }
 
