@@ -76,13 +76,13 @@ public class Car extends Actor
         int rightEdge = world.getWidth();
         int bottomEdge = world.getHeight();
 
-        if (y == 0) {
+        if (y <= 0) {
             return "top";
-        } else if (y == bottomEdge) {
+        } else if (y >= bottomEdge) {
             return ("bottom");
-        } else if (x == 0) {
+        } else if (x <= 0) {
             return "left";
-        } else if (x == rightEdge) {
+        } else if (x >= rightEdge) {
             return "right";
         } else {
             return null;
@@ -103,16 +103,19 @@ public class Car extends Actor
         int rightEdge = world.getWidth();
         int bottomEdge = world.getHeight();
 
-        
+        System.out.println(edge + ". x is " + x + " and y is " + y);
         if (edge == "bottom") {
             System.out.println("car at bottom");
             setLocation(x, 0);
         } else if(edge == "top") {
             setLocation (x, bottomEdge);
+            System.out.println("car at top");
         } else if (edge == "left") {
             setLocation(rightEdge, y);
+            System.out.println("car at left");
         } else if (edge == "right") {
             setLocation(0, y);
+            System.out.println("car at right");
         } 
     }
 
