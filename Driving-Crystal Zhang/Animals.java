@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Animals extends Actor
 {
     //initialize variables
-    private String licensePlate;
+    private String animalType;
     private int speed;
     private int maxSpeed;
     private boolean debug = false;
@@ -29,8 +29,8 @@ public class Animals extends Actor
     }
 
     // constructor that accepts license plate, speed and max speed
-    public Animals(String licensePlate, int speed, int maxSpeed) {
-        this.licensePlate = licensePlate;
+    public Animals(String animalType, int speed, int maxSpeed) {
+        this.animalType = animalType;
 
         // ensures speed is not less than 0
         if (speed >= 0) {
@@ -119,8 +119,8 @@ public class Animals extends Actor
     }
 
     // license plate setter
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
+    public void setLicensePlate(String animalType) {
+        this.animalType = animalType;
 
     }
 
@@ -147,9 +147,9 @@ public class Animals extends Actor
 
     }
 
-    // licensePlate getter
-    public String getLicensePlate() {
-        return this.licensePlate;
+    // animalType getter
+    public String getAnimalType() {
+        return this.animalType;
     }
 
     // speed getter

@@ -18,18 +18,20 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
 
-        TitleScreen titleScreen = new TitleScreen();
 
         Turtle turtle = new Turtle(); // create controlled turtle with initial speed = 0, max speed = 120
         addObject(turtle,100, 200); // add to world
 
         Shark shark = new Shark("rand",1, 5); // create random car with initial speed = 1, max speed = 5
-
+        
         int randX = Greenfoot.getRandomNumber(580)-20;
         int randY = Greenfoot.getRandomNumber(390) - 10;
         int randRotation = Greenfoot.getRandomNumber(360);
-        addObject(shark, randX, randY); // add to world at random coordinates
-        shark.setRotation(randRotation);
+        //addObject(shark, 550, 350); // add to world at random coordinates
+        //shark.setRotation(randRotation);
+        
+        Fish fish = new Fish(); //create  fish
+        addObject(fish, 100, 100);
     }
 
     // tests the Animals class

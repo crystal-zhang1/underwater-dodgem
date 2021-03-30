@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RandomCar here.
+ * Shark is an obstacle that will move around randomly.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -10,13 +10,15 @@ public class Shark extends Animals
 {
     public Shark() {
         super();
-        GreenfootImage img = new GreenfootImage("Shark_Image.png");
-        img.scale(img.getWidth()/2, img.getHeight()/2);
+        //setImage(new GreenfootImage("Shark_Image.png"));
+        //GreenfootImage img = getImage();  
+        GreenfootImage img = new GreenfootImage("images/Shark_Image.png");
+        img.scale(50, 50);
         setImage(img);
     }
 
-    public Shark(String licensePlate, int speed, int maxSpeed) {
-        super(licensePlate, speed, maxSpeed);
+    public Shark(String animalType, int speed, int maxSpeed) {
+        super(animalType, speed, maxSpeed);
     }
 
     public void randomTurn() {
