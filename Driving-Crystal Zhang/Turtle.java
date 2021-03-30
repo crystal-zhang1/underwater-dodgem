@@ -1,24 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ControlledCar here.
+ * Write a description of class Turtle here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ControlledCar extends Car
+public class Turtle extends Animals
 {
     //constructor that calls constructor from parent class
-    public ControlledCar() {
+    public Turtle() {
         super();
     }
 
-    public ControlledCar(String licensePlate, int speed, int maxSpeed) {
+    public Turtle(String licensePlate, int speed, int maxSpeed) {
         super(licensePlate, speed, maxSpeed);
     }
 
     /**
-     * Act - do whatever the ControlledCar wants to do. This method is called whenever
+     * Act - do whatever the Turtle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 

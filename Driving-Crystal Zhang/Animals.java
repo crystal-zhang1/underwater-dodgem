@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Actor class for car with an explicit constructor.
+ * Actor class for animals with an explicit constructor.
  * 
  * @author (Crystal Zhang) 
  * @version (1.0.0)
  */
-public class Car extends Actor
+public class Animals extends Actor
 {
     //initialize variables
     private String licensePlate;
@@ -14,22 +14,22 @@ public class Car extends Actor
     private int maxSpeed;
     private boolean debug = false;
     /**
-     * Constructor for class Car.
+     * Constructor for class Animals.
      * 
      */
-    public Car() {
+    public Animals() {
         this(0, 120);
 
     }
 
     // constructor that accepts speed and max speed
-    public Car(int speed, int maxSpeed) {
+    public Animals(int speed, int maxSpeed) {
         this("ABCD123", speed, maxSpeed);
 
     }
 
     // constructor that accepts license plate, speed and max speed
-    public Car(String licensePlate, int speed, int maxSpeed) {
+    public Animals(String licensePlate, int speed, int maxSpeed) {
         this.licensePlate = licensePlate;
 
         // ensures speed is not less than 0
@@ -87,7 +87,6 @@ public class Car extends Actor
         } else {
             return null;
         }
-        
 
     }
 
@@ -164,7 +163,7 @@ public class Car extends Actor
     }
 
     /**
-     * Act - do whatever the Car wants to do. This method is called whenever
+     * Act - do whatever the Animals wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
