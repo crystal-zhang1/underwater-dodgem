@@ -28,6 +28,11 @@ public class TitleScreen extends World
 
     public void act()
     {
-        if (Greenfoot.isKeyDown("space")) Greenfoot.setWorld(new MyWorld());
+        //to goes to level depending on key pressed
+        if (Greenfoot.isKeyDown("1")) Greenfoot.setWorld(new MyWorld1()); //level 1
+        
+        if (Greenfoot.isKeyDown("2")) Greenfoot.setWorld(new MyWorld2()); //level 2
+        
+        //if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new MyWorld3()); //level 3
     }
 }
