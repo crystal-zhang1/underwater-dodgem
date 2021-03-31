@@ -20,7 +20,6 @@ public class Shark extends Animals
 
         int turnAmount= Greenfoot.getRandomNumber(24) - 12; // car will turn random amount
         int chanceOfTurn = Greenfoot.getRandomNumber(100); 
-        //int turnChancePerFrame = Greenfoot.getRandomNumber(10);
 
         if (chanceOfTurn < 10) { // car has 10 percent chance of turning every frame
             turn(turnAmount);

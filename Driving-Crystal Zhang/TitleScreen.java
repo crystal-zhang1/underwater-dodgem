@@ -19,8 +19,11 @@ public class TitleScreen extends World
         super(600, 400, 1); 
         Greenfoot.start();
 
+        GreenfootImage img = new GreenfootImage("images/underwater_title_screen_background.png");
+        img.scale(610, 420);
+        setBackground(img);
         Message winMessage = new Message();
-        addObject(winMessage, (int) (600 / 2), (int) (400 / 2));
+        //addObject(winMessage, (int) (600 / 2), (int) (400 / 2));
     }
 
     public void act()
