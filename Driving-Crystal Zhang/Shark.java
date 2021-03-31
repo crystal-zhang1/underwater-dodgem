@@ -8,17 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shark extends Animals
 {
-    public Shark() {
-        super();
-        //setImage(new GreenfootImage("Shark_Image.png"));
-        //GreenfootImage img = getImage();  
-        GreenfootImage img = new GreenfootImage("images/Shark_Image.png");
-        img.scale(50, 50);
-        setImage(img);
-    }
 
     public Shark(String animalType, int speed, int maxSpeed) {
         super(animalType, speed, maxSpeed);
+        GreenfootImage img = new GreenfootImage("images/shark_image.png");
+        img.scale(100, 50);
+        setImage(img);
     }
 
     public void randomTurn() {

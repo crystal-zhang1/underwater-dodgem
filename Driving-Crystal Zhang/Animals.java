@@ -18,7 +18,7 @@ public class Animals extends Actor
      * 
      */
     public Animals() {
-        this(0, 120);
+        this(0, 12);
 
     }
 
