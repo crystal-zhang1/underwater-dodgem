@@ -14,7 +14,7 @@ public class Message extends Actor
     Color backgroundColor;
 
     public Message() {
-        this("PRESS SPACE TO START");
+        this("GAME OVER");
     }
     
     public Message(String messageIn) {

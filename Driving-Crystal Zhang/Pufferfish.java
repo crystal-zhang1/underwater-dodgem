@@ -23,6 +23,7 @@ public class Pufferfish extends Animals
      */
     public void act() {
         move(getSpeed() * -1);
+        wrap();
     }    
     
 }

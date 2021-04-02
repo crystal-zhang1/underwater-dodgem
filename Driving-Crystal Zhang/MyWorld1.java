@@ -12,8 +12,13 @@ public class MyWorld1 extends World
 
     private int spawnTimer;
     private int frequency = 2000; //higher number, less frequent
-    private int totalStrawberries = 10;
-    
+    private int countdownTimer = 3600; // countdown timer for 3600 act cycles = 60 seconds
+    private int totalStrawberries = 6;
+    private int totalRocks = 6;
+    ScoreCount scoreCount = new ScoreCount();
+    LivesCount livesCount = new LivesCount();
+    TimeLeft timeLeft = new TimeLeft();
+
     private boolean debug = false;
 
     /**
@@ -35,13 +40,6 @@ public class MyWorld1 extends World
         Turtle turtle = new Turtle("rand",0, 7); // create controlled turtle with initial speed = 0, max speed = 120
         addObject(turtle,100, 200); // add to world
 
-        Shark shark = new Shark("rand",1, 5); // create random car with initial speed = 1, max speed = 5
-        int randX = Greenfoot.getRandomNumber(580)-20;
-        int randY = Greenfoot.getRandomNumber(390) - 10;
-        int randRotation = Greenfoot.getRandomNumber(180);
-        addObject(shark, randX, randY); // add to world at random coordinates
-        shark.setRotation(randRotation);
-        
         int count = 0;
         while (count < totalStrawberries) {
             if (placeStrawberry()) {
@@ -51,7 +49,21 @@ public class MyWorld1 extends World
                     System.out.println("No luck to place strawberry: " + count);
             }
         }
+        
+        int countRock = 0;
+        while (countRock < totalRocks) {
+            if (placeRock()) {
+                countRock = countRock + 1;
+            } else {
+                if (debug)
+                    System.out.println("No luck to place rock: " + count);
+            }
+        }
 
+        //adds score, lives, and time countdown to display in world
+        addObject(scoreCount, 50, 20);
+        addObject(livesCount, 150, 20);
+        addObject(timeLeft, 520, 20);
     }
 
     public void generatePufferfishes() {
@@ -74,7 +86,7 @@ public class MyWorld1 extends World
         int randY = Greenfoot.getRandomNumber(400);
         Strawberry strawberry = new Strawberry();
 
-        // Place the ball into the world
+        // Place the strawberry into the world
         if (getObjectsAt(randX, randY, Strawberry.class).isEmpty()) {
 
             addObject(strawberry, randX, randY);
@@ -84,21 +96,48 @@ public class MyWorld1 extends World
         return false;
 
     }
-    
+
+    private boolean placeRock() {
+        // Get a random value for x and y to place the katamari at.
+        int randX = Greenfoot.getRandomNumber(600);
+        int randY = Greenfoot.getRandomNumber(400);
+        Rock rock = new Rock();
+
+        // Place the strawberry into the world
+        if (getObjectsAt(randX, randY, Rock.class).isEmpty() && getObjectsAt(randX, randY, Strawberry.class).isEmpty()) {
+
+            addObject(rock, randX, randY);
+            return true;
+        }
+
+        return false;
+    }
+
+    //getter for ScoreCount
+    public ScoreCount getScoreCount() {
+        return scoreCount;
+    }
+
+    //getter for LivesCount
+    public LivesCount getLivesCount() {
+        return livesCount;
+    }
+
     public void act() {
-        
-        spawnTimer = (spawnTimer + 1) % (90*frequency/1000);
+        /*spawnTimer = (spawnTimer + 1) % (90*frequency/1000);
         if (spawnTimer == 1) // at each timer reset
         {
-           Strawberry strawberry = new Strawberry();
-           
-           
-        } 
-        
-        spawnTimer = (spawnTimer + 1) % (90*frequency/1000);
-        if (spawnTimer == 1) // at each timer reset
+        generatePufferfishes();
+        } */
+
+        if (countdownTimer>0)
         {
-            generatePufferfishes();
-        } 
+            countdownTimer--;
+            timeLeft.updateTime();
+            if(countdownTimer == 0) Greenfoot.setWorld(new TitleScreen());
+        }
+
+        if (Greenfoot.isKeyDown("escape")) Greenfoot.setWorld(new TitleScreen()); //return to title screen
+
     }
 }

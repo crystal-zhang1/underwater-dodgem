@@ -22,6 +22,7 @@ public class TitleScreen extends World
         GreenfootImage img = new GreenfootImage("images/underwater_title_screen_background.png");
         img.scale(610, 420);
         setBackground(img);
+        
         Message winMessage = new Message();
         //addObject(winMessage, (int) (600 / 2), (int) (400 / 2));
     }
@@ -33,6 +34,7 @@ public class TitleScreen extends World
         
         if (Greenfoot.isKeyDown("2")) Greenfoot.setWorld(new MyWorld2()); //level 2
         
-        //if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new MyWorld3()); //level 3
+        
+        if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new MyWorld3()); //level 3
     }
 }
