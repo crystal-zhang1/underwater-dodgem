@@ -22,6 +22,16 @@ public class Turtle extends Animals
         setImage(img);
     }
 
+    public boolean isTouchingRock() {
+        List<Rock> touchingObstacle = getIntersectingObjects(Rock.class);
+
+        if (touchingObstacle.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public boolean isTouchingPufferfish() {
         List<Pufferfish> touchingObstacle = getIntersectingObjects(Pufferfish.class);
 
@@ -55,6 +65,35 @@ public class Turtle extends Animals
     }
 
     public int livesCount() {
+        boolean rock = this.isTouchingRock();
+        if (rock == true) {
+            removeTouching(Rock.class);
+
+            if (lives > 0) {
+                World myWorld = getWorld();
+
+                if (this.getWorld().getClass() == MyWorld1.class) {
+                    // score count for world 1 
+                    MyWorld1 myWorld1 = (MyWorld1)myWorld;
+                    LivesCount livesCount1 = myWorld1.getLivesCount();
+                    livesCount1.updateLives();
+                } else if (this.getWorld().getClass() == MyWorld2.class) {
+                    // score count for world 2
+                    MyWorld2 myWorld2 = (MyWorld2)myWorld;
+                    LivesCount livesCount2 = myWorld2.getLivesCount();
+                    livesCount2.updateLives();
+                } else if (this.getWorld().getClass() == MyWorld3.class) {
+                    // score count for world 3
+                    MyWorld3 myWorld3 = (MyWorld3)myWorld;
+                    LivesCount livesCount3 = myWorld3.getLivesCount();
+                    livesCount3.updateLives(); 
+                }
+            }
+            lives -= 1;
+            System.out.println("lives: " + lives);
+            return lives;
+        }
+
         boolean pufferfish = this.isTouchingPufferfish();
         if (pufferfish == true) {
             removeTouching(Pufferfish.class);
@@ -93,19 +132,19 @@ public class Turtle extends Animals
         return lives;
     }
 
-    public int scoreCount() {
+    /*public int scoreCount() {
 
-        //score if turtle touches food (strawberry)
-        boolean food = this.isTouchingStrawberry();
-        if (food == true) {
-            removeTouching(Strawberry.class);
-            Strawberry strawberry = new Strawberry();
-            getWorld().addObject(strawberry, 200, 200);
-            score += 1;
-            if (debug) System.out.println("score: " + score + "\n");
-        }   
-        return score;
-    }
+    //score if turtle touches food (strawberry)
+    boolean food = this.isTouchingStrawberry();
+    if (food == true) {
+    removeTouching(Strawberry.class);
+    Strawberry strawberry = new Strawberry();
+    getWorld().addObject(strawberry, 200, 200);
+    score += 1;
+    if (debug) System.out.println("score: " + score + "\n");
+    }   
+    return score;
+    }*/
 
     /**
      * Act - do whatever the Turtle wants to do. This method is called whenever
@@ -144,7 +183,7 @@ public class Turtle extends Animals
             World myWorld = getWorld();
             removeTouching(Strawberry.class);
             Strawberry strawberry = new Strawberry();
-            getWorld().addObject(strawberry, 200, 200);
+            getWorld().addObject(strawberry, 200, 200); 
             score += 1;
             System.out.println("score: " + score + "\n");
 

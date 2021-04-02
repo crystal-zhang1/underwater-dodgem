@@ -116,15 +116,14 @@ public class MyWorld2 extends World
         }  
 
         
-        
+        // 
         if (frameNum == 120) { //after 120 act cycles (2 seconds), rate of pufferfish spawn will increase
-            increasePufferfish();
+            increasePufferfish(); 
             frameNum = 0;
         } else {
             frameNum++;
         }
         System.out.println("frameNum: " + frameNum);
-        
         
         
         if (countdownTimer > 0)
