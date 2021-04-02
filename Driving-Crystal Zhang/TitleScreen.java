@@ -14,7 +14,7 @@ public class TitleScreen extends World
      * 
      */
     public TitleScreen()
-    {    
+    { 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         Greenfoot.start();
@@ -30,11 +30,11 @@ public class TitleScreen extends World
     public void act()
     {
         //to goes to level depending on key pressed
-        if (Greenfoot.isKeyDown("1")) Greenfoot.setWorld(new MyWorld1()); //level 1
+        if (Greenfoot.isKeyDown("1")) Greenfoot.setWorld(new Level1()); //level 1
         
-        if (Greenfoot.isKeyDown("2")) Greenfoot.setWorld(new MyWorld2()); //level 2
+        if (Greenfoot.isKeyDown("2")) Greenfoot.setWorld(new Level2()); //level 2
         
         
-        if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new MyWorld3()); //level 3
+        if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new Level3()); //level 3
     }
 }

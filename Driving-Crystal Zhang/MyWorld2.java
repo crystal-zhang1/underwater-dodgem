@@ -66,12 +66,12 @@ public class MyWorld2 extends World
      * @return Returns true if successful, false if not successful
      */
     private boolean placeStrawberry() {
-        // Get a random value for x and y to place the katamari at.
+        // Get a random value for x and y to place the strawberry at.
         int randX = Greenfoot.getRandomNumber(600);
         int randY = Greenfoot.getRandomNumber(400);
         Strawberry strawberry = new Strawberry();
 
-        // Place the ball into the world
+        // Place the strawberry into the world
         if (getObjectsAt(randX, randY, Strawberry.class).isEmpty()) {
 
             addObject(strawberry, randX, randY);

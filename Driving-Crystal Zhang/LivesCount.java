@@ -8,17 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LivesCount extends Actor
 {
-    int lives = 3;
-    
-    public void updateLives() {
-        lives--;
+    public LivesCount(int lives) {
+        showLives(lives);
     }
     
     /**
      * Act - do whatever the LivesCount wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
+    public void showLives(int lives) 
     {
         setImage(new GreenfootImage("Lives: " + lives, 24, Color.WHITE, Color.BLUE));
     }    

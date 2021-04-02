@@ -7,18 +7,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class ScoreCount extends Actor
-{
-    int score = 0;
-    
-    public void updateScore() {
-        score++;
+{    
+    public ScoreCount(int score) {
+        showScore(score);
     }
     
-    /**
-     * Act - do whatever the ScoreCount wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    public void showScore(int score) 
     {
         setImage(new GreenfootImage("Score: " + score, 24, Color.WHITE, Color.BLUE));
     }    
