@@ -38,7 +38,7 @@ public class Level2 extends Levels {
         }
 
         // Rate of pufferfish spawning will increase every 120 act cycles (2 seconds)
-        if (frameNum == 120) { 
+        if (frameNum == 110) { 
             increasePufferfish();
             frameNum = 0;
         } else {
