@@ -5,7 +5,7 @@ VERSION or DATE: April 2, 2021
 AUTHORS: Crystal Zhang
 
 INSTRUCTIONS:
-Survive for one minute with 3 lives in each level to win. Collect as many strawberries as you can to get points. Each level will present a unique challenge!
+Survive for one minute with 3 lives in each level to win. Collect as many strawberries as you can to get points. Each level will present a unique challenge! Use the left/right arrow keys to turn and the up/down arrow keys to accelerate/slow down (tap once to increase speed by 1).
 
 LEVEL 1:
 Avoid the stationary rocks

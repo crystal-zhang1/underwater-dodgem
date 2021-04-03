@@ -21,7 +21,7 @@ public class Instructions extends World
         super(600, 400, 1); 
 
         // Generates background image for this world
-        GreenfootImage img = new GreenfootImage("images/instructions_background.png");
+        GreenfootImage img = new GreenfootImage("instructions_background2.jpeg");
         img.scale(600, 400);
         setBackground(img);
         

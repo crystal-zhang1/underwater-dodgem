@@ -11,7 +11,7 @@ public class TitleScreen extends World
 
     // Initialize variable
     protected GreenfootSound backgroundMusic;
-
+    private boolean debug = false;
     /**
      * Constructor for objects of class TitleScreen. 
      * 
@@ -81,7 +81,7 @@ public class TitleScreen extends World
                     Button currentButton = (Button) currentActor;
                     int mouseButtonPressed = mouse.getButton();
                     int mouseClickCount = mouse.getClickCount();
-                    System.out.println(mouseButtonPressed + "  " + mouseClickCount);
+                    if(debug) System.out.println(mouseButtonPressed + "  " + mouseClickCount);
                     if (mouseClickCount == 1) {
                         currentButton.buttonToggle();
                         backgroundMusic.stop();
