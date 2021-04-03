@@ -10,12 +10,13 @@ public class GameOver extends World
 {
 
     protected ScoreCount scoreCount;
-
+    protected GreenfootSound backgroundSound;
+    
     /**
      * Constructor for objects of class GameOver.
      * 
      */
-    public GameOver(int score)
+    public GameOver(int score, GreenfootSound backgroundSoundIn)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
@@ -27,14 +28,21 @@ public class GameOver extends World
         ScoreCount scoreCount = new ScoreCount(score);
         addObject(scoreCount, 300, 160);
         
+        backgroundSound = backgroundSoundIn;
+        
         //Message winMessage = new Message();
         //addObject(winMessage, (int) (600 / 2), (int) (400 / 2)); 
     }
 
     public void act() {
-        if (Greenfoot.isKeyDown("enter")) Greenfoot.setWorld(new TitleScreen()); //TitleScreen
-
-        if (Greenfoot.isKeyDown("x")) Greenfoot.stop(); // stops running
-
+        if (Greenfoot.isKeyDown("enter")) {
+            backgroundSound.stop();
+            System.out.println("stop sound");
+            Greenfoot.setWorld(new TitleScreen()); // return to title screen
+        }
+        
+        if (Greenfoot.isKeyDown("x")) {
+            Greenfoot.stop(); // stops program
+        }
     }
 }

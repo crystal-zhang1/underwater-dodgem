@@ -14,8 +14,8 @@ public class Level1 extends Levels {
      */
     public Level1() {
         // Create Level One World with countdownTimer, totalStrawberries, totalRocks.
-        super(3600, 6, 5);
-        
+        super(3600, 6, 7);
+
         spawnTimer = 0;
     }
 
@@ -36,9 +36,6 @@ public class Level1 extends Levels {
             if (countdownTimer == 0)
                 Greenfoot.setWorld(new TitleScreen());
         }
-
-        if (Greenfoot.isKeyDown("escape"))
-            Greenfoot.setWorld(new TitleScreen()); // return to title screen
 
     }
 }

@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
 
+    protected GreenfootSound backgroundMusic;
+    
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -25,16 +27,29 @@ public class TitleScreen extends World
         
         Message winMessage = new Message();
         //addObject(winMessage, (int) (600 / 2), (int) (400 / 2));
+        
+        backgroundMusic = new GreenfootSound("sounds/background_music2.mp3");
+        backgroundMusic.playLoop();
     }
 
     public void act()
     {
+        
         //to goes to level depending on key pressed
-        if (Greenfoot.isKeyDown("1")) Greenfoot.setWorld(new Level1()); //level 1
+        if (Greenfoot.isKeyDown("1")) {
+            backgroundMusic.stop();
+            Greenfoot.setWorld(new Level1()); //level 1
+        }
         
-        if (Greenfoot.isKeyDown("2")) Greenfoot.setWorld(new Level2()); //level 2
+        if (Greenfoot.isKeyDown("2")) {
+            backgroundMusic.stop();
+            Greenfoot.setWorld(new Level2()); //level 2
+        }
         
         
-        if (Greenfoot.isKeyDown("3")) Greenfoot.setWorld(new Level3()); //level 3
+        if (Greenfoot.isKeyDown("3")) {
+            backgroundMusic.stop();
+            Greenfoot.setWorld(new Level3()); //level 3
+        }
     }
 }

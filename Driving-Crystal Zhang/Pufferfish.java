@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+
 /**
  * The Pufferfish class is an obstacle that will move (not randomly).
  * 
@@ -12,11 +13,10 @@ public class Pufferfish extends Animals
         super(animalType, speed, maxSpeed);
         GreenfootImage img = new GreenfootImage("images/pufferfish_image.png");
         img.scale(50, 50);
-        setImage(img);
+        setImage(img); 
     }
     
-    
-    
+
     /**
      * Act - do whatever the Pufferfish wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

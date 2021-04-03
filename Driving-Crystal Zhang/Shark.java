@@ -8,9 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shark extends Animals
 {
+    private int frameNum;
 
     public Shark(String animalType, int speed, int maxSpeed) {
         super(animalType, speed, maxSpeed);
+        frameNum = 0;
         GreenfootImage img = new GreenfootImage("images/shark_image.png");
         img.scale(100, 50);
         setImage(img);
@@ -43,19 +45,15 @@ public class Shark extends Animals
      */
     public void act() 
     {
-
-        // ensures car doesn't keep trying to turn while not moving 
-        if (getSpeed() != 0) {
+        if (frameNum == 3) { // after 120 act cycles (2 seconds), rate of pufferfish spawn will increase
             move(getSpeed());
             randomTurn();
             randomAccelerate();
-
+            wrap();
+            frameNum = 0;
         } else {
-            move(getSpeed());
-            randomAccelerate();
+            frameNum++;
         }
-
-        wrap();
 
     }    
 }

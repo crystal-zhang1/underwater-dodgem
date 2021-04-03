@@ -7,6 +7,8 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Levels extends World {
+    private static int WORLD_WIDTH = 600;
+    private static int WORLD_HEIGHT = 400;
 
     protected int countdownTimer;
     protected ScoreCount scoreCount;
@@ -20,9 +22,11 @@ public class Levels extends World {
     protected int spawnTimer;
     protected int frequency; // higher number, less frequent
     protected int frameNum;
-    
+
     protected Turtle turtle;
-    
+
+    protected GreenfootSound backgroundSound;
+
     protected boolean debug = false;
 
     /**
@@ -30,7 +34,7 @@ public class Levels extends World {
      * 
      */
     public Levels() {
-        this(3600, 6, 0, 2600);
+        this(3600, 6, 0, 2600, WORLD_WIDTH, WORLD_HEIGHT);
     }
 
     public Levels(int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn) {
@@ -38,7 +42,7 @@ public class Levels extends World {
     }
 
     public Levels(int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn, int frequencyIn) {
-        this(600, 400, countdownTimerIn, totalStrawberriesIn, totalRocksIn, frequencyIn);
+        this(WORLD_WIDTH, WORLD_HEIGHT, countdownTimerIn, totalStrawberriesIn, totalRocksIn, frequencyIn);
     }
 
     public Levels(int worldWidthIn, int worldHeightIn, int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn, int frequencyIn) {
@@ -57,6 +61,12 @@ public class Levels extends World {
         frameNum = 0;
 
         prepare(); // spawn everything
+        backgroundSound = new GreenfootSound("underwater_background_ambience.wav");
+        backgroundSound.playLoop();
+    }
+
+    public GreenfootSound getBackgroundSound() {
+        return backgroundSound;
     }
 
     public void prepare() {
@@ -118,8 +128,8 @@ public class Levels extends World {
      */
     private boolean placeStrawberry() {
         // Get a random value for x and y to place the strawberry at
-        int randX = Greenfoot.getRandomNumber(600);
-        int randY = Greenfoot.getRandomNumber(400);
+        int randX = Greenfoot.getRandomNumber(WORLD_WIDTH);
+        int randY = Greenfoot.getRandomNumber(WORLD_HEIGHT);
         Strawberry strawberry = new Strawberry();
 
         // Place the strawberry into the world
@@ -135,8 +145,10 @@ public class Levels extends World {
 
     private boolean placeRock() {
         // Get a random value for x and y to place the Rock at.
-        int randX = Greenfoot.getRandomNumber(600);
-        int randY = Greenfoot.getRandomNumber(400);
+
+        int xRange = (this.getClass() == Level1.class) ? WORLD_WIDTH : WORLD_WIDTH/2;
+        int randX = Greenfoot.getRandomNumber(xRange);
+        int randY = Greenfoot.getRandomNumber(WORLD_HEIGHT);
         Rock rock = new Rock();
 
         // Place the strawberry into the world
@@ -156,8 +168,8 @@ public class Levels extends World {
 
         // random number from 300 to 600 (so shark spawns on other half of world where
         // turtle is not))
-        int randX = Greenfoot.getRandomNumber(300) + 300;
-        int randY = Greenfoot.getRandomNumber(400);
+        int randX = Greenfoot.getRandomNumber(WORLD_WIDTH/2) + WORLD_WIDTH/2;
+        int randY = Greenfoot.getRandomNumber(WORLD_HEIGHT);
 
         // selects random spawn direction from 180 degrees to 360 (so shark will go in
         // general direction of turtle)
@@ -184,7 +196,6 @@ public class Levels extends World {
          * spawnTimer = (spawnTimer + 1) % (90*frequency/1000); if (spawnTimer == 1) //
          * at each timer reset { generatePufferfishes(); }
          */
-
         // countdwon timer that goes to win screen once countdown reaches 0
         if (countdownTimer > 0) {
             countdownTimer--;
@@ -193,8 +204,6 @@ public class Levels extends World {
                 Greenfoot.setWorld(new WinScreen(turtle.getScore()));
         }
 
-        if (Greenfoot.isKeyDown("escape"))
-            Greenfoot.setWorld(new TitleScreen()); // return to title screen
 
     }
 }

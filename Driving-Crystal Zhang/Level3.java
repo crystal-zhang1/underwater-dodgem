@@ -14,22 +14,12 @@ public class Level3 extends Levels {
     public Level3() {
         // Create Level Three World with countdownTimer, totalStrawberries, totalRocks.
         super(3600, 3, 0);
-        
+
         GreenfootImage img = new GreenfootImage("images/ocean_background3.png");
         img.scale(860, 404);
         setBackground(img);
-        
+
         placeShark();
     }
 
-    public void act() {
-        
-        
-        if (Greenfoot.isKeyDown("escape"))
-            Greenfoot.setWorld(new TitleScreen()); // return to title screen
-        if (Greenfoot.isKeyDown("r"))
-            Greenfoot.setWorld(new Level3()); // restart level
-        if (Greenfoot.isKeyDown("x"))
-            Greenfoot.stop(); // stops program
-    }
 }

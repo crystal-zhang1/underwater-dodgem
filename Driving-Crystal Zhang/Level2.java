@@ -14,15 +14,14 @@ public class Level2 extends Levels {
      */
     public Level2() {
         // Create Level Two World with countdownTimer, totalStrawberries, totalRocks.
-        super(3600, 3, 0);
-        
+        super(3600, 3, 3);
+
         GreenfootImage img = new GreenfootImage("images/ocean_background2.jpg");
         img.scale(600, 400);
         setBackground(img);
 
-        
     }
-
+    
     public void act() {
         spawnTimer = (spawnTimer + 1) % (90 * frequency / 1000);
         if (spawnTimer == 1) // at each timer reset
@@ -30,7 +29,6 @@ public class Level2 extends Levels {
             generatePufferfishes();
         }
 
-        
         if (frameNum == 120) { // after 120 act cycles (2 seconds), rate of pufferfish spawn will increase
             increasePufferfish();
             frameNum = 0;
@@ -47,12 +45,6 @@ public class Level2 extends Levels {
                 Greenfoot.setWorld(new TitleScreen());
         }
 
-        if (Greenfoot.isKeyDown("escape"))
-            Greenfoot.setWorld(new TitleScreen()); // return to title screen
-        if (Greenfoot.isKeyDown("r"))
-            Greenfoot.setWorld(new Level2()); // restart level
-        if (Greenfoot.isKeyDown("x"))
-            Greenfoot.stop(); // stops program
 
     }
 

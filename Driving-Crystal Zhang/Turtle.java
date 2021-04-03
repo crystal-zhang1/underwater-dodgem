@@ -70,13 +70,27 @@ public class Turtle extends Animals {
     public int livesCount() {
         boolean rock = this.isTouchingRock();
         if (rock == true) {
+            Greenfoot.playSound("sounds/bonk.wav");
+            
             removeTouching(Rock.class);
+            
+            World myWorld = getWorld();
+            int worldWidth = myWorld.getWidth();
+            int worldHeight = myWorld.getHeight();
+            
+            removeTouching(Rock.class);
+            
+            Rock newRock = new Rock();
+            int xRange = (myWorld.getClass() == Level1.class) ? worldWidth : worldWidth/2;
+            int x = Greenfoot.getRandomNumber(xRange);
+            int y = Greenfoot.getRandomNumber(worldHeight);
+            getWorld().addObject(newRock, x, y);
 
             lives -= 1;
             if (debug)
                 System.out.println("lives: " + lives);
 
-            World myWorld = getWorld();
+            
 
             // Lives count for world
             Levels levels = (Levels) myWorld;
@@ -88,6 +102,7 @@ public class Turtle extends Animals {
 
         boolean pufferfish = this.isTouchingPufferfish();
         if (pufferfish == true) {
+            Greenfoot.playSound("sounds/ouch.wav");
             removeTouching(Pufferfish.class);
             lives -= 1;
             System.out.println("lives: " + lives);
@@ -102,6 +117,7 @@ public class Turtle extends Animals {
 
         boolean shark = this.isTouchingShark();
         if (shark == true) {
+            Greenfoot.playSound("sounds/scream.wav");
             lives = 0;
             System.out.println("Eaten by shark");
 
@@ -144,8 +160,13 @@ public class Turtle extends Animals {
         }
 
         if (livesCount() == 0) {
-            Greenfoot.setWorld(new GameOver(score));
+            World myWorld = getWorld();
 
+            // Lives count for world
+            Levels levels = (Levels) myWorld;
+            
+            Greenfoot.setWorld(new GameOver(score, levels.getBackgroundSound()));
+            Greenfoot.playSound("sounds/fading_scream.wav");
             // Greenfoot.stop();
 
         }
@@ -155,6 +176,9 @@ public class Turtle extends Animals {
         // score if turtle touches food (strawberry)
         boolean food = this.isTouchingStrawberry();
         if (food == true) {
+            Greenfoot.playSound("sounds/bite.mp3");
+            
+            
             World myWorld = getWorld();
             removeTouching(Strawberry.class);
             Strawberry strawberry = new Strawberry();
