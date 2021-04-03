@@ -40,9 +40,11 @@ public class Levels extends World {
 
     /**
      * Constructor for objects of class Levels.
-     * @param countdownTimerIn Timer for length of level (how long player needs to survive for)
+     * 
+     * @param countdownTimerIn    Timer for length of level (how long player needs
+     *                            to survive for)
      * @param totalStrawberriesIn Total number of strawberries that spawn into world
-     * @param totalRocksIn Total number of rocks that spawn into world
+     * @param totalRocksIn        Total number of rocks that spawn into world
      */
     public Levels(int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn) {
         this(countdownTimerIn, totalStrawberriesIn, totalRocksIn, 2600);
@@ -50,10 +52,12 @@ public class Levels extends World {
 
     /**
      * Constructor for objects of class Levels.
-     * @param countdownTimerIn Timer for length of level (how long player needs to survive for)
+     * 
+     * @param countdownTimerIn    Timer for length of level (how long player needs
+     *                            to survive for)
      * @param totalStrawberriesIn Total number of strawberries that spawn into world
-     * @param totalRocksIn Total number of rocks that spawn into world
-     * @param frequencyIn Frequency of pufferfish spawning into world
+     * @param totalRocksIn        Total number of rocks that spawn into world
+     * @param frequencyIn         Frequency of pufferfish spawning into world
      */
     public Levels(int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn, int frequencyIn) {
         this(WORLD_WIDTH, WORLD_HEIGHT, countdownTimerIn, totalStrawberriesIn, totalRocksIn, frequencyIn);
@@ -61,14 +65,18 @@ public class Levels extends World {
 
     /**
      * Constructor for objects of class Levels.
-     * @param worldWidthIn Width of the world
-     * @param worldHeightIn Height of world
-     * @param countdownTimerInTimer for length of level (how long player needs to survive for)
-     * @param totalStrawberriesIn Total number of strawberries that spawn into world
-     * @param totalRocksIn Total number of rocks that spawn into world
-     * @param frequencyIn Frequency of pufferfish spawning into world
+     * 
+     * @param worldWidthIn          Width of the world
+     * @param worldHeightIn         Height of world
+     * @param countdownTimerInTimer for length of level (how long player needs to
+     *                              survive for)
+     * @param totalStrawberriesIn   Total number of strawberries that spawn into
+     *                              world
+     * @param totalRocksIn          Total number of rocks that spawn into world
+     * @param frequencyIn           Frequency of pufferfish spawning into world
      */
-    public Levels(int worldWidthIn, int worldHeightIn, int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn, int frequencyIn) {
+    public Levels(int worldWidthIn, int worldHeightIn, int countdownTimerIn, int totalStrawberriesIn, int totalRocksIn,
+            int frequencyIn) {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(worldWidthIn, worldHeightIn, 1, false);
 
@@ -84,7 +92,7 @@ public class Levels extends World {
         frameNum = 0;
 
         // Spawn everything into world
-        prepare(); 
+        prepare();
 
         // Play background sound
         backgroundSound = new GreenfootSound("underwater_background_ambience.wav");
@@ -93,6 +101,7 @@ public class Levels extends World {
 
     /**
      * Getter for background sound for world
+     * 
      * @return GreenfootSound Return backgroundSound for world
      */
     public GreenfootSound getBackgroundSound() {
@@ -114,8 +123,10 @@ public class Levels extends World {
                 if (placeStrawberry()) {
                     count = count + 1;
                 } else {
-                    if (debug)
+                    if (debug) {
                         System.out.println("No luck to place strawberry: " + count);
+                    }
+
                 }
             }
         }
@@ -185,18 +196,20 @@ public class Levels extends World {
 
     /**
      * Method to place rock into world
+     * 
      * @return boolean Returns true if successful, false if not successful
      */
     private boolean placeRock() {
-        // Get a random value for x and y to place the Rock at. If not in level one, range of rocks are limited to left half of world
-        int xRange = (this.getClass() == Level1.class) ? WORLD_WIDTH : WORLD_WIDTH/2;
+        // Get a random value for x and y to place the Rock at. If not in level one,
+        // range of rocks are limited to left half of world
+        int xRange = (this.getClass() == Level1.class) ? WORLD_WIDTH : WORLD_WIDTH / 2;
         int randX = Greenfoot.getRandomNumber(xRange);
         int randY = Greenfoot.getRandomNumber(WORLD_HEIGHT);
         Rock rock = new Rock();
 
         // Place the rock into the world
         if (getObjectsAt(randX, randY, Rock.class).isEmpty()
-        && getObjectsAt(randX, randY, Strawberry.class).isEmpty()) {
+                && getObjectsAt(randX, randY, Strawberry.class).isEmpty()) {
 
             addObject(rock, randX, randY);
             return true;
@@ -212,8 +225,9 @@ public class Levels extends World {
         // Create shark with initial speed = 1, max speed = 25
         Shark shark = new Shark("rand", 1, 25);
 
-        // Get random number from 300 to 600 (so shark spawns on the right hand side of world (opposite of turtle) at random height)
-        int randX = Greenfoot.getRandomNumber(WORLD_WIDTH/2) + WORLD_WIDTH/2;
+        // Get random number from 300 to 600 (so shark spawns on the right hand side of
+        // world (opposite of turtle) at random height)
+        int randX = Greenfoot.getRandomNumber(WORLD_WIDTH / 2) + WORLD_WIDTH / 2;
         int randY = Greenfoot.getRandomNumber(WORLD_HEIGHT);
 
         // Selects random spawn direction from 180 degrees to 360
@@ -226,6 +240,7 @@ public class Levels extends World {
 
     /**
      * Getter for ScoreCount
+     * 
      * @return ScoreCount Returns the score (number of strawberries eaten by turtle)
      */
     public ScoreCount getScoreCount() {
@@ -234,6 +249,7 @@ public class Levels extends World {
 
     /**
      * Getter for LivesCount
+     * 
      * @return LivesCount Return the lives the player has
      */
     public LivesCount getLivesCount() {
@@ -248,11 +264,11 @@ public class Levels extends World {
             countdownTimer--;
             timeLeft.updateTime();
             if (countdownTimer == 0) {
-                if (debug) System.out.println("countdown is 0");
+                if (debug)
+                    System.out.println("countdown is 0");
                 Greenfoot.setWorld(new WinScreen(turtle.getScore()));
             }
         }
-
 
     }
 }

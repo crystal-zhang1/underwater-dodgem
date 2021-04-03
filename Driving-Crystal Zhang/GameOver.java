@@ -12,6 +12,8 @@ public class GameOver extends World
     protected ScoreCount scoreCount;
     protected GreenfootSound backgroundSound;
 
+    private boolean debug = false;
+
     /**
      * Constructor for objects of class GameOver.
      * @param score The number of strawberries the turtle eats
@@ -43,7 +45,7 @@ public class GameOver extends World
         // Return user to title screen
         if (Greenfoot.isKeyDown("enter")) {
             backgroundSound.stop();
-            System.out.println("stop sound");
+            if(debug) System.out.println("stop sound");
             Greenfoot.setWorld(new TitleScreen()); // return to title screen
         }
         

@@ -1,7 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level2 here.
+ * World for level 2
  * 
  * @author (Crystal Zhang)
  * @version 1.0.0
@@ -27,21 +27,24 @@ public class Level2 extends Levels {
      * Generates pufferfish into world and increases rate of spawn
      */
     public void act() {
+        // Call levels actor
+        super.act();
+        
+        // Spawn pufferfish with specified frequency
         spawnTimer = (spawnTimer + 1) % (90 * frequency / 1000);
-        if (spawnTimer == 1) // at each timer reset
+        if (spawnTimer == 1)
         {
             generatePufferfishes();
         }
 
-        if (frameNum == 120) { // after 120 act cycles (2 seconds), rate of pufferfish spawn will increase
+        // Rate of pufferfish spawning will increase every 120 act cycles (2 seconds)
+        if (frameNum == 120) { 
             increasePufferfish();
             frameNum = 0;
         } else {
             frameNum++;
         }
         if (debug) System.out.println("frameNum: " + frameNum);
-
-
 
     }
 

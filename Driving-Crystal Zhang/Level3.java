@@ -1,7 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level3 here.
+ * World for third level
  * 
  * @author (Crystal Zhang)
  * @version 1.0.0
