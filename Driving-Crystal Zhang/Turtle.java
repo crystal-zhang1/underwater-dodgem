@@ -170,8 +170,6 @@ public class Turtle extends Animals {
             // Greenfoot.stop();
 
         }
-        
-        
 
         // score if turtle touches food (strawberry)
         boolean food = this.isTouchingStrawberry();

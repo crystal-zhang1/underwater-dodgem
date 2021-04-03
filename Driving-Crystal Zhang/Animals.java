@@ -6,29 +6,38 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Crystal Zhang) 
  * @version (1.0.0)
  */
+
 public class Animals extends Actor
 {
     //initialize variables
     private String animalType;
     private int speed;
     private int maxSpeed;
-    private boolean debug = false;
+    
+    protected boolean debug = false;
     /**
      * Constructor for class Animals.
-     * 
      */
     public Animals() {
         this(0, 12);
 
     }
-
-    // constructor that accepts speed and max speed
+    
+     /**
+      * Constructor that accepts speed and max speed
+      * @param speed Default speed that the animal will move at
+      * @param maxSpeed Maxiumum speed that the animal will be able to move at
+      */
     public Animals(int speed, int maxSpeed) {
-        this("ABCD123", speed, maxSpeed);
-
+        this("Animal", speed, maxSpeed);
     }
 
-    // constructor that accepts license plate, speed and max speed
+    /**
+     * Constructor that accepts the animal type, speed, and maximum speed
+     * @param animalType 
+     * @param speed Default speed that the animal will move at
+     * @param maxSpeed Maxiumum speed that the animal will be able to move at
+      */
     public Animals(String animalType, int speed, int maxSpeed) {
         this.animalType = animalType;
 
@@ -54,7 +63,12 @@ public class Animals extends Actor
         }
 
     }
-    //increases or decreases speed of the car
+
+    /**
+     * Increases or decreases speed of the car
+     * 
+     * @param speedChange Accelerate by the speed change value
+     */
     public void accelerate(int speedChange) {
         speed = speed + speedChange;
         if (speed < 0) {
@@ -64,15 +78,20 @@ public class Animals extends Actor
         }
     }
 
-    //checks to see if car is touching edge of world
+    /**
+     * Checks to see if car is touching edge of world
+     * 
+     * @return String Returns "top", "bottom", "left", "right", or null depending on the world edge that is animal is touching.
+     */
     public String isTouchingEdge() {
         boolean isTouchingEdge;
+
+        // Gets location of animal
         int x = getX();
         int y = getY();
 
+        // Get world width and height
         World world = getWorld();
-        int worldWidth = world.getWidth();
-        int worldHeight = world.getHeight();
         int rightEdge = world.getWidth();
         int bottomEdge = world.getHeight();
 
@@ -90,41 +109,56 @@ public class Animals extends Actor
 
     }
 
+    /** 
+     * Wraps actor when it reaches the edge of the world.
+     * 
+     */
     public void wrap() {
         String edge = isTouchingEdge();
 
+        // Gets location of animal
         int x = getX();
         int y = getY();
 
+        // Get world width and height
         World world = getWorld();
-        int worldWidth = world.getWidth();
-        int worldHeight = world.getHeight();
         int rightEdge = world.getWidth();
         int bottomEdge = world.getHeight();
 
         if (debug) System.out.println(edge + ". x is " + x + " and y is " + y);
+
         if (edge == "bottom") {
-            if (debug) System.out.println("car at bottom");
-            setLocation(x, 0);
+            if (debug) System.out.println("actor at bottom");
+            // Sets actor location to top edge of world
+            setLocation(x, 0); 
         } else if(edge == "top") {
+            // Sets actor location to bottom edge of world
             setLocation (x, bottomEdge);
-            if (debug) System.out.println("car at top");
+            if (debug) System.out.println("actor at top");
         } else if (edge == "left") {
-            setLocation(rightEdge, y);
-            if (debug) System.out.println("car at left");
+            // Sets actor location to right edge of world
+            setLocation(rightEdge, y); 
+            if (debug) System.out.println("actor at left");
         } else if (edge == "right") {
-            setLocation(0, y);
-            if (debug) System.out.println("car at right");
+            // Sets actor location to left edge of world
+            setLocation(0, y); 
+            if (debug) System.out.println("actor at right");
         } 
     }
 
-    // license plate setter
-    public void setLicensePlate(String animalType) {
+    /**
+     * Setter for animalType
+     * @param animalType 
+     */
+    public void setAnimalType(String animalType) {
         this.animalType = animalType;
 
     }
 
-    // speed setter
+    /**
+     * Setter for speed
+     * @param speed Animal speed
+     */
     public void setSpeed(int speed) {
         // ensures speed is not less than 0
         if (speed >= 0) {
@@ -141,29 +175,40 @@ public class Animals extends Actor
 
     }
 
-    //maxSpeed setter
+    /**
+     * Setter for maxSpeed
+     * @param maxSpeed Maxiumum speed actor can move
+     */
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
-
     }
 
-    // animalType getter
+    /**
+     * Getter for animalType
+     * @return String
+     */
     public String getAnimalType() {
         return this.animalType;
     }
 
-    // speed getter
+    /**
+     * Getter for speed
+     * @return int Gets speed actor moves at
+     */
     public int getSpeed() {
         return this.speed;
     }
 
-    // maxSpeed getter
+    /**
+     * Getter for maxSpeed
+     * @return int Gets maximum speed actor can move 
+     */
     public int getMaxSpeed() {
         return this.maxSpeed;
     }
 
     /**
-     * Act - do whatever the Animals wants to do. This method is called whenever
+     * Moves and wraps Animal. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
