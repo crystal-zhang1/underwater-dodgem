@@ -20,7 +20,7 @@ public class Shark extends Animals
     public Shark(String animalType, int speed, int maxSpeed) {
         super(animalType, speed, maxSpeed);
         frameNum = 0;
-       
+
         // Set image for shark and scales image
         GreenfootImage img = new GreenfootImage("images/shark_image.png");
         img.scale(100, 50);
@@ -51,25 +51,22 @@ public class Shark extends Animals
         int accelerateAmount = Greenfoot.getRandomNumber(30)-15;
         int chance = Greenfoot.getRandomNumber(101);
 
-        // Shark has 2 percent chance to acclerate
-        if (chance < 2) {
+        // Shark has 30 percent chance to acclerate
+        if (chance < 30) {
             accelerate(accelerateAmount);
         }
     }
 
     /**
-     * Move, turn, accelerate and wraps shark every 3 act cycles
+     * Move, turn, accelerate and wraps shark
      */
     public void act() 
     {
-        if (frameNum == 3) {
-            move(getSpeed());
-            randomTurn();
-            randomAccelerate();
-            frameNum = 0;
-        } else {
-            frameNum++;
-        }
+
+        move(getSpeed());
+        randomTurn();
+        randomAccelerate();
+
         wrap();
     }    
 }

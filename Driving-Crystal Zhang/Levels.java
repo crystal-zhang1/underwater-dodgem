@@ -222,8 +222,8 @@ public class Levels extends World {
      * Method to place shark into the world
      */
     public void placeShark() {
-        // Create shark with initial speed = 1, max speed = 25
-        Shark shark = new Shark("rand", 1, 25);
+        // Create shark with initial speed = 1, max speed = 6
+        Shark shark = new Shark("rand", 1, 6);
 
         // Get random number from 300 to 600 (so shark spawns on the right hand side of
         // world (opposite of turtle) at random height)
