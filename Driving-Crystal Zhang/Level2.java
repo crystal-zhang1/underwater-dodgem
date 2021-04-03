@@ -37,13 +37,6 @@ public class Level2 extends Levels {
         }
         System.out.println("frameNum: " + frameNum);
 
-        if (countdownTimer > 0) {
-            System.out.println("\nfrequency: " + frequency);
-            countdownTimer--;
-            timeLeft.updateTime();
-            if (countdownTimer == 0)
-                Greenfoot.setWorld(new TitleScreen());
-        }
 
 
     }

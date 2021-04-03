@@ -18,7 +18,7 @@ public class WinScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         
-        GreenfootImage img = new GreenfootImage("images/game_over_background.png");
+        GreenfootImage img = new GreenfootImage("images/underwater_win_screen_background.png");
         img.scale(600, 400);
         setBackground(img);
 

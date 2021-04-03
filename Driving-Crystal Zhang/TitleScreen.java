@@ -12,7 +12,7 @@ public class TitleScreen extends World
     protected GreenfootSound backgroundMusic;
     
     /**
-     * Constructor for objects of class TitleScreen.
+     * Constructor for objects of class TitleScreen. 
      * 
      */
     public TitleScreen()
@@ -24,9 +24,6 @@ public class TitleScreen extends World
         GreenfootImage img = new GreenfootImage("images/underwater_title_screen_background.png");
         img.scale(610, 420);
         setBackground(img);
-        
-        Message winMessage = new Message();
-        //addObject(winMessage, (int) (600 / 2), (int) (400 / 2));
         
         backgroundMusic = new GreenfootSound("sounds/background_music2.mp3");
         backgroundMusic.playLoop();
@@ -50,6 +47,16 @@ public class TitleScreen extends World
         if (Greenfoot.isKeyDown("3")) {
             backgroundMusic.stop();
             Greenfoot.setWorld(new Level3()); //level 3
+        }
+        
+        if (Greenfoot.isKeyDown("i")) {
+            backgroundMusic.stop();
+            Greenfoot.setWorld(new Instructions()); // instructions
+        }
+        
+        if (Greenfoot.isKeyDown("x")) {
+            backgroundMusic.stop();
+            Greenfoot.stop();
         }
     }
 }

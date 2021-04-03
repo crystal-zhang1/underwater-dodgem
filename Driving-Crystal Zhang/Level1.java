@@ -28,14 +28,4 @@ public class Level1 extends Levels {
         addObject(pufferfish, worldWidth, y);
     }
 
-    public void act() {
-        // countdwon timer that goes to win screen once countdown reaches 0
-        if (countdownTimer > 0) {
-            countdownTimer--;
-            timeLeft.updateTime();
-            if (countdownTimer == 0)
-                Greenfoot.setWorld(new TitleScreen());
-        }
-
-    }
 }

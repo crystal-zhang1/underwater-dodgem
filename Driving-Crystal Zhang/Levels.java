@@ -200,8 +200,10 @@ public class Levels extends World {
         if (countdownTimer > 0) {
             countdownTimer--;
             timeLeft.updateTime();
-            if (countdownTimer == 0)
+            if (countdownTimer == 0) {
+                System.out.println("countdown is 0");
                 Greenfoot.setWorld(new WinScreen(turtle.getScore()));
+            }
         }
 
 
