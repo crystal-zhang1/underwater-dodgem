@@ -1,12 +1,14 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class button here.
+ * Button class to start first level
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * @author Crystal Zhang
+ * @version 1.0.0
  */
 public class Button extends Actor {
+    
+    // Initialize variable
     int width;
     int height;
     boolean buttonState;
@@ -17,10 +19,17 @@ public class Button extends Actor {
 
     private boolean debug = false;
 
+    /**
+     * Button constructor
+     */
     public Button() {
         this("Start Level 1 now!");
     }
 
+    /**
+     * Constructor for button details with text parameter
+     * @param textIn Text that is displayed in button
+     */
     public Button(String textIn) {
         buttonState = false;
         width = 200;
@@ -29,18 +38,29 @@ public class Button extends Actor {
         fontColor = Color.WHITE;
         fontSize = 20;
         buttonText = textIn;
-        updateImage();
+        displayMessage();
     }
 
+    /**
+     * Getter for button width
+     * @return int Returns width
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Getter for button height
+     * @return int Returns height
+     */
     public int getHeight() {
         return height;
     }
 
-    void updateImage() {
+    /** 
+     * Display button message 
+     */
+    void displayMessage() {
         // Create an image of the set size using built in greenfoot commands
         GreenfootImage displayImage = new GreenfootImage(width, height);
 
@@ -58,16 +78,25 @@ public class Button extends Actor {
         if (debug) System.out.println("===============: width " + width + " height " + height);
     }
 
+    /**
+     * Method to toggle button off
+     */
     public void buttonOff() {
         buttonState = false; 
         switchColor();
     }
 
+    /**
+     * Method to toggle button on
+     */
     public void buttonOn() {
         buttonState = true;
         switchColor();
     }
 
+    /**
+     * Method to switch color of button
+     */
     public void switchColor() {
         if(buttonState) {
             fontColor = Color.BLUE;
@@ -77,9 +106,12 @@ public class Button extends Actor {
             backgroundColor = Color.BLUE;
         }
 
-        updateImage();
+        displayMessage();
     }
 
+    /**
+     * Toggles button state
+     */
     public void buttonToggle() {
         buttonState = !buttonState;
         switchColor();

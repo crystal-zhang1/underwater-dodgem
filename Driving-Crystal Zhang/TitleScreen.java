@@ -72,6 +72,7 @@ public class TitleScreen extends World
 
         MouseInfo mouse = Greenfoot.getMouseInfo();
 
+        // Brings user to level 1 world when button is clicked
         if (mouse != null) {
             Actor currentActor = mouse.getActor();
 
