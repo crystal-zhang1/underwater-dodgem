@@ -3,12 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class TitleScreen here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Crystal Zhang) 
+ * @version 1.0.0
  */
 public class TitleScreen extends World
 {
 
+    // Initialize variable
     protected GreenfootSound backgroundMusic;
     
     /**
@@ -21,39 +22,46 @@ public class TitleScreen extends World
         super(600, 400, 1); 
         Greenfoot.start();
 
+        // Sets background image for title screen and scales
         GreenfootImage img = new GreenfootImage("images/underwater_title_screen_background.png");
         img.scale(610, 420);
         setBackground(img);
         
+        // Play background music
         backgroundMusic = new GreenfootSound("sounds/background_music2.mp3");
         backgroundMusic.playLoop();
     }
 
+    /**
+     * Act method for title screen. Brings player to specified world depending on key pressed.
+     */
     public void act()
     {
-        
-        //to goes to level depending on key pressed
+        // Press 1 to go to level 1
         if (Greenfoot.isKeyDown("1")) {
             backgroundMusic.stop();
-            Greenfoot.setWorld(new Level1()); //level 1
+            Greenfoot.setWorld(new Level1()); 
         }
         
+        // Press 2 to go to level 2
         if (Greenfoot.isKeyDown("2")) {
             backgroundMusic.stop();
-            Greenfoot.setWorld(new Level2()); //level 2
+            Greenfoot.setWorld(new Level2()); 
         }
         
-        
+        // Press 3 to go to level 3
         if (Greenfoot.isKeyDown("3")) {
             backgroundMusic.stop();
             Greenfoot.setWorld(new Level3()); //level 3
         }
         
+        // Press key i to go to instructions
         if (Greenfoot.isKeyDown("i")) {
             backgroundMusic.stop();
             Greenfoot.setWorld(new Instructions()); // instructions
         }
         
+        // Press key x to stop program
         if (Greenfoot.isKeyDown("x")) {
             backgroundMusic.stop();
             Greenfoot.stop();

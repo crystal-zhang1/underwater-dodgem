@@ -1,20 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LivesCount here.
+ * Displays panel for number of lives on the world
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Crystal Zhang) 
+ * @version 1.0.0
  */
 public class LivesCount extends Actor
 {
+    /**
+     * Constructor for LivesCount
+     * @param lives int Number of lives
+     */
     public LivesCount(int lives) {
         showLives(lives);
     }
     
     /**
-     * Act - do whatever the LivesCount wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Sets the image for number of lives
      */
     public void showLives(int lives) 
     {

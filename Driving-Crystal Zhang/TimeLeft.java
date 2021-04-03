@@ -1,22 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TimeLeft here.
+ * Creates panel for time left and displays into world.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Crystal Zhang) 
+ * @version 1.0.0
  */
 public class TimeLeft extends Actor
 {
-    int timeLeft = 3600;
+    // Initialize variable 
+    int timeLeft = 3600; // Sets the total countdown time to 60 seconds
     
+    /**
+     * Method that updates the time
+     */
     public void updateTime() {
         timeLeft--;
     }
     
     /**
-     * Act - do whatever the TimeLeft wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Displays the time left in seconds (by convertng time left in act cycles to seconds)
      */
     public void act() 
     {

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Stationary actor, the turtle will eat strawberry to gain points.
+ * Stationary actor, the turtle will eat strawberry to gain points (increase score).
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Crystal Zhang) 
+ * @version 1.0.0
  */
 public class Strawberry extends Actor
 {
@@ -14,6 +14,7 @@ public class Strawberry extends Actor
      * Constructor for Strawberry
      */
     public Strawberry() {
+        // Set image for strawberry and scales image
         GreenfootImage img = new GreenfootImage("images/strawberry.png");
         img.scale(20, 25);
         setImage(img);
@@ -33,6 +34,7 @@ public class Strawberry extends Actor
             System.out.println("Placed the strawberry to location: " + x + " " + y);
         }
 
+        // If not touching anything, put strawberry into world at random location
         while (isTouching(null)) {
             x = Greenfoot.getRandomNumber(worldWidth);
             y = Greenfoot.getRandomNumber(worldHeight);
@@ -41,17 +43,5 @@ public class Strawberry extends Actor
             }
             setLocation(x, y);
         }
-    }
-
-
-    
-    
-    /**
-     * Act - do whatever the Strawberry wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+    }   
 }
