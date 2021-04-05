@@ -22,7 +22,7 @@ public class Shark extends Animals
         frameNum = 0;
 
         // Set image for shark and scales image
-        GreenfootImage img = new GreenfootImage("images/shark_image.png");
+        GreenfootImage img = new GreenfootImage("images/shark.png");
         img.scale(100, 50);
         setImage(img);
     }
